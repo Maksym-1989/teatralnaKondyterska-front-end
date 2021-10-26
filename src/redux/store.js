@@ -19,6 +19,7 @@ import { authReducer } from "./auth/auth-reducers";
 const authPersistConfig = {
   key: "auth",
   storage,
+  whitelist: ["token"],
 };
 
 const rootReducer = combineReducers({

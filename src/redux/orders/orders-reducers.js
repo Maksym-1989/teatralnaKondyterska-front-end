@@ -2,9 +2,12 @@ import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 
 import {
-  addOrderFailure,
-  addOrderSuccess,
   addOrderRequested,
+  addOrderSuccess,
+  addOrderFailure,
+  getAllForADayRequest,
+  getAllForADaySuccess,
+  getAllForADayError,
 } from "./orders-actions";
 
 const ordersOfCurrentDay = createReducer([], {
@@ -12,9 +15,9 @@ const ordersOfCurrentDay = createReducer([], {
     if (!state) {
       return [payload.data];
     }
-    // const stateWithNewData = [...state, payload.data];
     return [...state, payload.data];
   },
+  [getAllForADaySuccess]: (state, { payload }) => payload.data,
 });
 const ordersOfMonth = createReducer([], {});
 const allorders = createReducer([], {});

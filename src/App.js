@@ -10,8 +10,8 @@ import AppLoader from "./components/appLoader/AppLoader";
 const AuthPage = lazy(() =>
   import("./pages/authPage/AuthPage" /* webpackChunkName: "AuthPage" */)
 );
-const HomePage = lazy(() =>
-  import("./pages/homePage/HomePage" /* webpackChunkName: "HomePage" */)
+const MainPage = lazy(() =>
+  import("./pages/mainPage/MainPage" /* webpackChunkName: "MainPage" */)
 );
 
 const NotFoundPage = lazy(() =>
@@ -21,20 +21,19 @@ const NotFoundPage = lazy(() =>
 function App() {
   return (
     <>
-      <Suspense fallback={<AppLoader/>}>
+      <Suspense fallback={<AppLoader />}>
         <Switch>
           <PublicRoute
             exact
             path="/"
-            redirectTo="/orders"
+            redirectTo="/main"
             restricted
-            component={AuthPage} 
+            component={AuthPage}
           />
           <PrivateRoute
-            exact
-            path="/orders"
+            path="/main"
             redirectTo="/"
-            component={HomePage}
+            component={MainPage}
           />
           <Route component={NotFoundPage}></Route>
         </Switch>

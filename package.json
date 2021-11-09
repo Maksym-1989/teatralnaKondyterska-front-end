@@ -12,6 +12,7 @@
     "lazy": "^1.0.11",
     "lazyload": "^2.0.0-rc.2",
     "modern-normalize": "^1.1.0",
+    "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-datepicker": "^4.3.0",
     "react-dom": "^17.0.2",

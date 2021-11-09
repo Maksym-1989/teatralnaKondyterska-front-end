@@ -1,6 +1,11 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
-import Header from "./components/header/Header";
+import { ToastContainer, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import PublicRoute from "./routes/publicRoute";
+import PrivateRoute from "./routes/privateRoute";
+import AppLoader from "./components/appLoader/AppLoader";
 
 const AuthPage = lazy(() =>
   import("./pages/authPage/AuthPage" /* webpackChunkName: "AuthPage" */)
@@ -16,14 +21,32 @@ const NotFoundPage = lazy(() =>
 function App() {
   return (
     <>
-      <Header />
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<AppLoader/>}>
         <Switch>
-          <Route exact path="/" component={AuthPage}></Route>
-          <Route exact path="/orders" component={HomePage}></Route>
+          <PublicRoute
+            exact
+            path="/"
+            redirectTo="/orders"
+            restricted
+            component={AuthPage} 
+          />
+          <PrivateRoute
+            exact
+            path="/orders"
+            redirectTo="/"
+            component={HomePage}
+          />
           <Route component={NotFoundPage}></Route>
         </Switch>
       </Suspense>
+      <ToastContainer
+        transition={Zoom}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }

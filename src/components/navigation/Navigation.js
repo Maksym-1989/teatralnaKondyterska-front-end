@@ -6,16 +6,6 @@ const Navigation = () => {
   return (
     <nav>
       <ul className={css.list}>
-        <li className={css.item}>
-          <NavLink
-            exact
-            to="/"
-            className={css.header_nav_link}
-            activeClassName={css.header_nav_link_active}
-          >
-            <p>Auth</p>
-          </NavLink>
-        </li>
         <li>
           <NavLink
             exact
@@ -23,7 +13,7 @@ const Navigation = () => {
             className={css.header_nav_link}
             activeClassName={css.header_nav_link_active}
           >
-            <p>Orders</p>
+            <p>Создание заказа</p>
           </NavLink>
         </li>
       </ul>

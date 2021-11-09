@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/auth-operation";
+import { FormikInput } from "../../shared/FormikInput";
 ///////////////////////////////Formik, YUP /////////////////////////////////////////////////
-import { ErrorMessage, Form, Formik, useField } from "formik";
+import {  Form, Formik, } from "formik";
 import * as Yup from "yup";
 
 const initialForm = { email: "", password: "" };
@@ -17,31 +17,7 @@ const validationSchema = Yup.object().shape({
     .max(10, "Must be exactly 10 digits"),
 });
 
-export const FormControl = ({ label, ...props }) => {
-  const id = useMemo(() => Math.floor(Math.random() * 99999).toString(), []);
-  const [field, meta] = useField(props);
-  return (
-    <div>
-      <label className="label" htmlFor={id}>
-        {label}
-        <input
-          id={id}
-          className={meta.error && meta.touched ? "input input-error" : "input"}
-          {...field}
-          {...props}
-        />
-        <ErrorMessage
-          name={field.name}
-          component="p"
-          className="error-message"
-        />
-        {/* {meta.error && meta.touched && (
-        <p className="text-red-500">{meta.error}</p>
-      )} */}
-      </label>
-    </div>
-  );
-};
+
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -59,10 +35,10 @@ const AuthForm = () => {
         onSubmit={(values) => handleSubmit(values)}
       >
         <Form>
-          <FormControl label="Email" name="email" type="email" />
-          <FormControl label="Password" type="password" name="password" />
+          <FormikInput label="Email" name="email" type="email" />
+          <FormikInput label="Password" type="password" name="password" />
           <button type="submit" className="btn">
-            Login
+            Войти
           </button>
         </Form>
       </Formik>

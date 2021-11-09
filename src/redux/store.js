@@ -15,6 +15,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/auth-reducers";
+import { ordersReducer } from "./orders/orders-reducers";
 
 const authPersistConfig = {
   key: "auth",
@@ -24,6 +25,7 @@ const authPersistConfig = {
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
+  order: ordersReducer,
 });
 
 const store = configureStore({

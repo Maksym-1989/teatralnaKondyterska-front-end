@@ -1,4 +1,3 @@
-const getIsAuth = (state) => state.auth.isAuthenticated;
-const getAuthUserName = (state) => state.auth.user.name;
+const getIsAuth = (state) => state.auth.token;
 
-export { getIsAuth, getAuthUserName };
+export { getIsAuth };

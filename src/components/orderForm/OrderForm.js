@@ -34,6 +34,11 @@ const OrderForm = () => {
 
   return (
     <div className="form-container">
+      <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
+
       <Formik
         initialValues={initialForm}
         validationSchema={validationSchema}

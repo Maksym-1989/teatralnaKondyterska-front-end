@@ -8,6 +8,9 @@ import {
   getAllForADayRequest,
   getAllForADaySuccess,
   getAllForADayError,
+  getAllForAMonthError,
+  getAllForAMonthSuccess,
+  getAllForAMonthRequest,
 } from "./orders-actions";
 
 const ordersOfCurrentDay = createReducer([], {
@@ -19,7 +22,10 @@ const ordersOfCurrentDay = createReducer([], {
   },
   [getAllForADaySuccess]: (state, { payload }) => payload.data,
 });
-const ordersOfMonth = createReducer([], {});
+const ordersOfMonth = createReducer([], {
+  [getAllForAMonthSuccess]: (state, { payload }) => payload.data,
+
+});
 const allorders = createReducer([], {});
 
 const ordersReducer = combineReducers({

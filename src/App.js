@@ -13,6 +13,9 @@ const AuthPage = lazy(() =>
 const MainPage = lazy(() =>
   import("./pages/mainPage/MainPage" /* webpackChunkName: "MainPage" */)
 );
+const ClientPage = lazy(() =>
+  import("./pages/clientPage/ClientPage" /* webpackChunkName: "ClientPage" */)
+);
 
 const NotFoundPage = lazy(() =>
   import("./pages/notFound/NotFoundPage" /* webpackChunkName: "NotFoundPage" */)
@@ -30,11 +33,16 @@ function App() {
             restricted
             component={AuthPage}
           />
-          <PrivateRoute
-            path="/main"
+
+          <PrivateRoute path="/main" redirectTo="/" component={MainPage} />
+
+          <PublicRoute
+            exact
+            path="/client/:id"
             redirectTo="/"
-            component={MainPage}
+            component={ClientPage}
           />
+
           <Route component={NotFoundPage}></Route>
         </Switch>
       </Suspense>

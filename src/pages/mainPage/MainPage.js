@@ -20,9 +20,6 @@ const OrdersOfMonth = lazy(() =>
   )
 );
 
-const NotFoundPage = lazy(() =>
-  import("../notFound/NotFoundPage" /* webpackChunkName: "NotFoundPage" */)
-);
 
 const MainPage = () => {
   const match = useRouteMatch();

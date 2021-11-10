@@ -6,6 +6,9 @@ import {
   getAllForADayRequest,
   getAllForADaySuccess,
   getAllForADayError,
+  getAllForAMonthError,
+  getAllForAMonthSuccess,
+  getAllForAMonthRequest,
 } from "./orders-actions";
 
 axios.defaults.baseURL = "http://localhost:4444";
@@ -32,7 +35,7 @@ const addOrder = (formObj) => async (dispatch, getState) => {
   }
 };
 const getAllOrdersForDay = (day) => async (dispatch, getState) => {
-  dispatch(getAllForADayRequest());
+  dispatch(getAllForAMonthRequest());
   try {
     const authToken = getState().auth.token;
     token.set(authToken);
@@ -42,5 +45,16 @@ const getAllOrdersForDay = (day) => async (dispatch, getState) => {
     dispatch(getAllForADayError());
   }
 };
+const getAllOrdersOfMonth = (month) => async (dispatch, getState) => {
+  dispatch(getAllForADayRequest());
+  try {
+    const authToken = getState().auth.token;
+    token.set(authToken);
+    const { data } = await axios.get(`/api/v1/orders/${month}`);
+    dispatch(getAllForAMonthSuccess(data));
+  } catch (error) {
+    dispatch(getAllForAMonthError());
+  }
+};
 
-export { addOrder, getAllOrdersForDay };
+export { addOrder, getAllOrdersForDay, getAllOrdersOfMonth };

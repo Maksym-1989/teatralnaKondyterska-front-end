@@ -3,7 +3,7 @@ import React from "react";
 import css from "./Section.module.css";
 
 const Section = ({ children }) => {
-  return <div className={css.section}>{children}</div>;
+  return <section className={css.section}>{children}</section>;
 };
 
 export default Section;

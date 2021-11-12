@@ -12,7 +12,6 @@ const ClientPage = () => {
   useEffect(() => {
     getOneOrder(id).then((data) => setOrder(data.data));
   }, [id]);
-  console.log()
   return (
     <>
       <Button name="Вернутся назад" />

@@ -4,6 +4,9 @@ import { addOrder } from "../../redux/orders/orders-operations";
 ///////////////////////////////Formik, YUP /////////////////////////////////////////////////
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import { useState } from "react";
+import axios from "axios";
+import { useHistory, useLocation } from "react-router";
 
 const initialForm = {
   name: "",
@@ -27,23 +30,41 @@ const validationSchema = Yup.object().shape({
 
 const OrderForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [urlImg, setUrlImg] = useState(false);
 
-  const handleSubmit = (values) => {
-    dispatch(addOrder(values));
+  const handleSubmit = async (values) => {
+    const { data } = await dispatch(addOrder(values));
+    history.push(`/client/${data._id}`);
+  };
+
+  const handlePostImg = (event) => {
+    const file = event.target.files[0];
+
+    const data = new FormData();
+    data.append("image", file);
+    axios
+      .post("http://localhost:4444/api/v1/orders/uploadFiles", data)
+      .then((data) => setUrlImg(data?.data?.img))
+      .catch((error) => alert("Изображение не загружено!!!"));
   };
 
   return (
-    <div className="form-container">
-      <div class="ocean">
-        <div class="wave"></div>
-        <div class="wave"></div>
-      </div>
-
+    <>
+      <form action="#">
+        {" "}
+        <input
+          name="image"
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          onChange={handlePostImg}
+        />
+      </form>
       <Formik
         initialValues={initialForm}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          handleSubmit(values);
+          handleSubmit({ ...values, img: urlImg });
           resetForm();
         }}
         enableReinitialize={true}
@@ -96,7 +117,8 @@ const OrderForm = () => {
           </button>
         </Form>
       </Formik>
-    </div>
+      <img src={urlImg.img} alt="" width="250" />{" "}
+    </>
   );
 };
 

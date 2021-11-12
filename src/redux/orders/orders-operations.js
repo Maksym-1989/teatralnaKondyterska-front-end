@@ -28,8 +28,8 @@ const addOrder = (formObj) => async (dispatch, getState) => {
     const authToken = getState().auth.token;
     token.set(authToken);
     const { data } = await axios.post("/api/v1/orders", formObj);
-    console.log(data);
     dispatch(addOrderSuccess(data));
+    return data;
   } catch (error) {
     dispatch(addOrderFailure(error.message));
   }

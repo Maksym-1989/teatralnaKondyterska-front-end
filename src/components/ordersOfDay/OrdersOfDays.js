@@ -8,6 +8,8 @@ import setSelectedDate from "../../redux/date/date.actions";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, useLocation } from "react-router-dom";
+import OrdersList from "../ordersList/OrdersList";
+import Section from "../section/Section";
 
 const OrdersOfDays = () => {
   const dispatch = useDispatch();
@@ -30,19 +32,18 @@ const OrdersOfDays = () => {
 
   return (
     <>
-      <h2>OrdersOfDays</h2>
-      <DatePicker
-        dateFormat="dd.MM.yyyy"
-        selected={
-          date ? new Date(date.split(".").reverse().join("-")) : new Date()
-        }
-        onChange={handleChangeDate}
-      />
-      {dataOfDay.map((order) => (
-        <Link to={{ pathname: `/client/${order._id}`, state: location }}>
-          <p>{order.time}</p>
-        </Link>
-      ))}
+      <Section>
+        {" "}
+        <h2>OrdersOfDays</h2>
+        <DatePicker
+          dateFormat="dd.MM.yyyy"
+          selected={
+            date ? new Date(date.split(".").reverse().join("-")) : new Date()
+          }
+          onChange={handleChangeDate}
+        />
+        <OrdersList data={dataOfDay} />
+      </Section>
     </>
   );
 };

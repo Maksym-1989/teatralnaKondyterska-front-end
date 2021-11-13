@@ -7,22 +7,26 @@ import * as Yup from "yup";
 import { useState } from "react";
 import axios from "axios";
 import { useHistory, useLocation } from "react-router";
+import { date } from "yup/lib/locale";
+import moment from "moment";
 
 const initialForm = {
   name: "",
-  phone: "",
+  phone: "+380",
   weight: "",
   price: "",
   prepayment: "",
   filling: "",
   description: "",
+  date: "",
+  time: "",
 };
 
 const phoneRegExp = /^(?:\+38)?(0\d{9})$/;
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Поле обязательное!"),
-  phone: Yup.string().matches(phoneRegExp, "Phone number is not valid"),
+  phone: Yup.string().matches(phoneRegExp, "Phone number is not valid").max(13),
   weight: Yup.number().required("Поле обязательное!"),
   price: Yup.number().required("Поле обязательное!"),
   prepayment: Yup.number().required("Поле обязательное!"),
@@ -35,7 +39,7 @@ const OrderForm = () => {
 
   const handleSubmit = async (values) => {
     const { data } = await dispatch(addOrder(values));
-    history.push(`/client/${data._id}`);
+    // history.push(`/client/${data._id}`);
   };
 
   const handlePostImg = (event) => {
@@ -64,8 +68,12 @@ const OrderForm = () => {
         initialValues={initialForm}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          handleSubmit({ ...values, img: urlImg });
-          resetForm();
+          const date = values.date;
+          const newDate = moment(date).format("DD.MM.YYYY");
+          const updateDateAndImg = { ...values, img: urlImg, date: newDate };
+
+          handleSubmit(updateDateAndImg);
+          // resetForm();
         }}
         enableReinitialize={true}
       >
@@ -78,6 +86,13 @@ const OrderForm = () => {
             autoComplete="off"
             placeholder="+380990000000"
           />
+          <FormikInput
+            label="Дата:"
+            name="date"
+            type="date"
+            format="DD.MM.YYYY"
+          />
+          <FormikInput label="Время" name="time" type="time" />
           <FormikInput
             label="Вес изделия"
             name="weight"

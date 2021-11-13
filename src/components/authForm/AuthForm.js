@@ -2,8 +2,9 @@ import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/auth-operation";
 import { FormikInput } from "../../shared/FormikInput";
 ///////////////////////////////Formik, YUP /////////////////////////////////////////////////
-import {  Form, Formik, } from "formik";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import css from "./AuthForm.module.css";
 
 const initialForm = { email: "", password: "" };
 
@@ -13,11 +14,8 @@ const validationSchema = Yup.object().shape({
     .required("Поле обязательное!"),
   password: Yup.string()
     .required("Поле обязательное!")
-    .min(3, "Must be exactly 3 digits")
-    .max(10, "Must be exactly 10 digits"),
+    .min(6, "Минимум 6 символов.")
 });
-
-
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -28,18 +26,39 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className={css.wrapper}>
       <Formik
         initialValues={initialForm}
         validationSchema={validationSchema}
         onSubmit={(values) => handleSubmit(values)}
       >
-        <Form>
-          <FormikInput label="Email" name="email" type="email" />
-          <FormikInput label="Password" type="password" name="password" />
-          <button type="submit" className="btn">
-            Войти
-          </button>
+        <Form className={css.login_form}>
+          <div class={css.header}>
+            <h1>Авторизация</h1>
+            <span>
+              Введите ваши регистрационные данные для входа в ваш личный
+              кабинет.{" "}
+            </span>
+          </div>
+          <div className={css.content}>
+            <FormikInput
+              label="Email"
+              name="email"
+              type="email"
+              className={css.input}
+            />
+            <FormikInput
+              label="Password"
+              type="password"
+              name="password"
+              className={css.input}
+            />
+          </div>
+          <div className={css.footer}>
+            <button type="submit" className={css.button}>
+              Войти
+            </button>
+          </div>
         </Form>
       </Formik>
     </div>

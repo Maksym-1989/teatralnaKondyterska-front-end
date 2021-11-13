@@ -11,15 +11,15 @@ export const FormikInput = ({ label, ...props }) => {
         {label}
         <input
           id={id}
-          className={meta.error && meta.touched ? "input input-error" : "input"}
+          className={meta.error && meta.touched ? "input-error" : "input"}
           {...field}
           {...props}
         />
-        <ErrorMessage
-          name={field.name}
-          component="p"
-          className="error-message"
-        />
+        <div className="box_error_message">
+          {meta.error && meta.touched && (
+            <p className="error_message_text">{meta.error}</p>
+          )}
+        </div>{" "}
       </label>
     </div>
   );

@@ -39,7 +39,7 @@ const OrderForm = () => {
 
   const handleSubmit = async (values) => {
     const { data } = await dispatch(addOrder(values));
-    // history.push(`/client/${data._id}`);
+    history.push(`/client/${data._id}`);
   };
 
   const handlePostImg = (event) => {
@@ -73,7 +73,7 @@ const OrderForm = () => {
           const updateDateAndImg = { ...values, img: urlImg, date: newDate };
 
           handleSubmit(updateDateAndImg);
-          // resetForm();
+          resetForm();
         }}
         enableReinitialize={true}
       >
@@ -132,7 +132,6 @@ const OrderForm = () => {
           </button>
         </Form>
       </Formik>
-      <img src={urlImg.img} alt="" width="250" />{" "}
     </>
   );
 };

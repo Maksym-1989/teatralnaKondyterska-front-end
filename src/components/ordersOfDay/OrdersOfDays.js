@@ -9,7 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, useLocation } from "react-router-dom";
 import OrdersList from "../ordersList/OrdersList";
-import Section from "../section/Section";
+import Container from "../container/Container";
 
 const OrdersOfDays = () => {
   const dispatch = useDispatch();
@@ -32,9 +32,8 @@ const OrdersOfDays = () => {
 
   return (
     <>
-      <Section>
+      <Container>
         {" "}
-        <h2>OrdersOfDays</h2>
         <DatePicker
           dateFormat="dd.MM.yyyy"
           selected={
@@ -43,7 +42,7 @@ const OrdersOfDays = () => {
           onChange={handleChangeDate}
         />
         <OrdersList data={dataOfDay} />
-      </Section>
+      </Container>
     </>
   );
 };

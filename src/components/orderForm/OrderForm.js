@@ -7,7 +7,6 @@ import * as Yup from "yup";
 import { useState } from "react";
 import axios from "axios";
 import { useHistory, useLocation } from "react-router";
-import { date } from "yup/lib/locale";
 import moment from "moment";
 
 const initialForm = {
@@ -18,7 +17,7 @@ const initialForm = {
   prepayment: "",
   filling: "",
   description: "",
-  date: "",
+  dateToReady: "",
   time: "",
 };
 
@@ -70,7 +69,11 @@ const OrderForm = () => {
         onSubmit={(values, { resetForm }) => {
           const date = values.date;
           const newDate = moment(date).format("DD.MM.YYYY");
-          const updateDateAndImg = { ...values, img: urlImg, date: newDate };
+          const updateDateAndImg = {
+            ...values,
+            img: urlImg,
+            dateToReady: newDate,
+          };
 
           handleSubmit(updateDateAndImg);
           resetForm();
@@ -88,7 +91,7 @@ const OrderForm = () => {
           />
           <FormikInput
             label="Дата:"
-            name="date"
+            name="dateToReady"
             type="date"
             format="DD.MM.YYYY"
           />

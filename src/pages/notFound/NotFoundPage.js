@@ -1,6 +1,5 @@
 import React from "react";
 import Container from "../../components/container/Container";
-import Section from "../../components/section/Section";
 import { Link } from "react-router-dom";
 import css from "./notFoundPage.module.css";
 import comingSoon from "../../img/coming-soon.jpg";
@@ -8,7 +7,6 @@ import comingSoon from "../../img/coming-soon.jpg";
 const NotFound = () => {
   return (
     <Container>
-      <Section>
         <div className={css.notFoundWrapper}>
           <p className={css.text}>
             Страница не найдена, или еще в разработке...
@@ -24,7 +22,6 @@ const NotFound = () => {
             </button>
           </Link>
         </div>
-      </Section>
     </Container>
   );
 };

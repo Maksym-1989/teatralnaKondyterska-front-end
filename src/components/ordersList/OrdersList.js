@@ -1,16 +1,29 @@
 import { Link } from "react-router-dom";
 import css from "./OrdersList.module.css";
+import IconDelete from "../iconDelete/IconDelete";
+import { useDispatch } from "react-redux";
+import { deleteOrder } from "../../redux/orders/orders-operations";
 
 const OrdersList = ({ data }) => {
+  const dispatch = useDispatch();
+
+  const handleOnClick = (id) => {
+    dispatch(deleteOrder(id));
+  };
+
   return (
     <ul className={css.list}>
       {data?.map((order) => (
-        <Link to={{ pathname: `/client/${order._id}` }} className={css.link}>
-          <li key={order._id} className={css.item}>
+        <li key={order._id} className={css.item}>
+          <button onClick={() => handleOnClick(order._id)} className={css.btnDelete}>
+            <IconDelete />
+          </button>
+
+          <Link to={{ pathname: `/client/${order._id}` }} className={css.link}>
             <div className={css.itemBox}>
               <div className={css.itemBoxTitle}>
-              <h2 className={css.itemTitle}>{order.name}</h2>
-              <p className={css.itemPhone}>{order.phone}</p>
+                <h2 className={css.itemTitle}>{order.name}</h2>
+                <p className={css.itemPhone}>{order.phone}</p>
               </div>
               <div className={css.gridBox}>
                 <div className={css.smallBox}>
@@ -41,8 +54,8 @@ const OrdersList = ({ data }) => {
                 </div>
               </div>
             </div>
-          </li>
-        </Link>
+          </Link>
+        </li>
       ))}
     </ul>
   );

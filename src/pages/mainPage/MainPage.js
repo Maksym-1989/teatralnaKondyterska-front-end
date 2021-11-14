@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import AppLoader from "../../components/appLoader/AppLoader";
 
-import Header from "../../components/header/Header";
+import NavBar from "../../components/navbar/NavBar";
 
 const OrderForm = lazy(() =>
   import(
@@ -25,7 +25,7 @@ const MainPage = () => {
   const match = useRouteMatch();
   return (
     <>
-      <Header />
+    <NavBar/>
       <Suspense fallback={<AppLoader/>}>
         <Switch>
           <Route exact  path={`${match.path}`} component={OrderForm}></Route>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import sprite from "../../img/icons/sprite_categories.svg";
 import { getAllOrdersOfMonth } from "../../redux/orders/orders-operations";
+import css from "./MonthPicker.module.css"
 
 const MonthPicker = () => {
   const dispatch = useDispatch();
@@ -27,18 +28,19 @@ const MonthPicker = () => {
   const month = date.toLocaleDateString("ru", { month: "long" });
 
   return (
-    <div>
+    <div className={css.pickerBox}>
       {" "}
-      <p>Текущий период :</p>
-      <div>
+      <p className={css.title}>Текущий период :</p>
+      <div className={css.box}>
         <span onClick={() => changeMonth("prev")}>
-          <svg width="8" height="15">
+          <svg width="25" height="25">
             <use xlinkHref={`${sprite}#icon-arrow-left`} />
           </svg>
-        </span>
-        {month} {year}
+        </span >
+        <p className={css.text}>{month} {year}</p>
+        
         <span onClick={() => changeMonth("next")}>
-          <svg width="8" height="15">
+          <svg width="25" height="25">
             <use xlinkHref={`${sprite}#icon-arrow-right`} />
           </svg>
         </span>

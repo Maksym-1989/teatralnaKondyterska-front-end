@@ -11,6 +11,9 @@ import {
   getAllForAMonthError,
   getAllForAMonthSuccess,
   getAllForAMonthRequest,
+  deleteOrderRequest,
+  deleteOrderSuccess,
+  deleteOrderError,
 } from "./orders-actions";
 
 const ordersOfCurrentDay = createReducer([], {
@@ -21,10 +24,20 @@ const ordersOfCurrentDay = createReducer([], {
     return [...state, payload.data];
   },
   [getAllForADaySuccess]: (state, { payload }) => payload.data,
+  [deleteOrderSuccess]: (state, { payload }) =>
+    state.filter(({ _id }) => _id !== payload.data._id),
 });
 const ordersOfMonth = createReducer([], {
-  [getAllForAMonthSuccess]: (state, { payload }) => payload.data,
+  [addOrderSuccess]: (state, { payload }) => {
+    if (!state) {
+      return [payload.data];
+    }
+    return [...state, payload.data];
+  },
 
+  [getAllForAMonthSuccess]: (state, { payload }) => payload.data,
+  [deleteOrderSuccess]: (state, { payload }) =>
+    state.filter(({ _id }) => _id !== payload.data._id),
 });
 const allorders = createReducer([], {});
 

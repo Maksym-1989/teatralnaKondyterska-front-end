@@ -31,7 +31,7 @@ export const FormikTextarea = ({ label, ...props }) => {
     <div>
       <label className="label" htmlFor={id}>
         {label}
-        <textarea
+        <textarea 
           id={id}
           className={
             meta.error && meta.touched ? "textarea textarea-error" : "textarea"

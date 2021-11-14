@@ -9,6 +9,9 @@ import {
   getAllForAMonthError,
   getAllForAMonthSuccess,
   getAllForAMonthRequest,
+  deleteOrderRequest,
+  deleteOrderSuccess,
+  deleteOrderError,
 } from "./orders-actions";
 
 axios.defaults.baseURL = "http://localhost:4444";
@@ -57,4 +60,17 @@ const getAllOrdersOfMonth = (month) => async (dispatch, getState) => {
   }
 };
 
-export { addOrder, getAllOrdersForDay, getAllOrdersOfMonth };
+const deleteOrder = (id) => async (dispatch, getState) => {
+  dispatch(deleteOrderRequest());
+
+  try {
+    const authToken = getState().auth.token;
+    token.set(authToken);
+    const { data } = await axios.delete(`/api/v1/orders/${id}`);
+    dispatch(deleteOrderSuccess(data));
+  } catch (error) {
+    dispatch(deleteOrderError());
+  }
+};
+
+export { addOrder, getAllOrdersForDay, getAllOrdersOfMonth, deleteOrder };

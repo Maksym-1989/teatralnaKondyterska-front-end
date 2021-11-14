@@ -1,11 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
 body {
+  background: url(./img/bg.png) repeat;
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
   font-weight: normal;
-  background: url(./img/bg.png) repeat;
+  background-color: #fff;
+}
 
+.bg {
+  background: url(./img/bg.png) repeat;
+  width: 100vw;
+  height: 100vh;
 }
 
 *,
@@ -70,6 +76,7 @@ button:hover {
   height: 20px;
   margin-top: 3px;
   height: 30px;
+  resize: none;
 }
 
 .input_error {
@@ -79,6 +86,7 @@ button:hover {
   width: 100%;
   outline: 0;
   height: 30px;
+  resize: none;
 }
 
 .box_error_message {

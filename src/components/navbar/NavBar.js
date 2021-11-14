@@ -3,25 +3,28 @@ import { NavLink, useRouteMatch } from "react-router-dom";
 import "./NavBar.css";
 import svgMenu from "../../img/icons/menu_icon.svg";
 import svgClose from "../../img/icons/close_icon.svg";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../redux/auth/auth-operation";
 
 function NavBar() {
   const [click, setClick] = useState(false);
   const match = useRouteMatch();
 
   const handleClick = () => setClick(!click);
+  const dispatch = useDispatch();
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to={`${match.url}`} className="nav-logo">
-            CodeBucks
+          <NavLink exact={true} to={`${match.url}`} className="nav-logo">
+            Выход
             <i className="fas fa-code"></i>
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <NavLink
-                exact
+                exact={true}
                 to={`${match.url}`}
                 activeClassName="active"
                 className="nav-links"
@@ -32,7 +35,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <NavLink
-                exact
+                exact={true}
                 to={`${match.url}/ordersOfDay`}
                 activeClassName="active"
                 className="nav-links"
@@ -43,7 +46,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <NavLink
-                exact
+                exact={true}
                 to={`${match.url}/ordersOfMonth`}
                 activeClassName="active"
                 className="nav-links"
@@ -53,15 +56,9 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
-                exact
-                to="/contact"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Contact Us
-              </NavLink>
+              <p className="nav-links" onClick={() => {
+                  dispatch(logOut());
+                }}>Выход</p>
             </li>
           </ul>
           <div className="nav-icon" onClick={handleClick}>

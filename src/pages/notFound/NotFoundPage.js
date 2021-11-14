@@ -16,7 +16,7 @@ const NotFound = () => {
             src={comingSoon}
             alt="Coming soon..."
           />
-          <Link to="/" exact>
+          <Link to="/main" exact={true}>
             <button type="button" className={css.secondary_form_btn}>
               На главную
             </button>

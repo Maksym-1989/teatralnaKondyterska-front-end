@@ -29,7 +29,10 @@ const register = (registrationObject) => async (dispatch) => {
   dispatch(registerRequest());
 
   try {
-    const { data } = await axios.post("/api/v1/auth/signup", registrationObject);
+    const { data } = await axios.post(
+      "/api/v1/auth/signup",
+      registrationObject
+    );
     token.set(data.token);
     dispatch(registerSuccess(data));
   } catch (error) {
@@ -48,14 +51,17 @@ const logIn = (loginObject) => async (dispatch) => {
   }
 };
 
-const logOut = () => async (dispatch) => {
+const logOut = () => async (dispatch, getState) => {
   dispatch(logoutRequest());
 
   try {
-    const { data } = await axios.post("/api/v1/auth/logout");
+    const authToken = getState().auth.token;
+    token.set(authToken);
+
+    const { data } = await axios.get("/api/v1/auth/logout");
     token.unset();
 
-    dispatch(logoutSuccess(data));
+    dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(error.message));
   }
@@ -80,7 +86,5 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(getCurrentUserError(error.message));
   }
 };
-
-
 
 export { token, register, logIn, logOut, getCurrentUser };

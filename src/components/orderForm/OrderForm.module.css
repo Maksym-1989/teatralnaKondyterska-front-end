@@ -191,7 +191,7 @@ FOOTER
 .input__file {
   opacity: 0;
   visibility: hidden;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .input__file_icon_wrapper {

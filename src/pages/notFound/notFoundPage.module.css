@@ -8,8 +8,12 @@
   margin-bottom: 50px;
 }
 
+.notFoundWrapper {
+  padding: 25px;
+}
+
 .comingSoon {
-  width: 500px;
+  width: 80%;
   margin-bottom: 50px;
   display: block;
 }
@@ -22,13 +26,13 @@
   line-height: 17px;
   letter-spacing: 0.04em;
 
-  color: #fc842d;
+  color: #2dccfc;
 
   width: 176px;
   height: 44px;
 
   background: #ffffff;
-  border: 2px solid #fc842d;
+  border: 2px solid #5596a8;
   box-sizing: border-box;
   border-radius: 30px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);

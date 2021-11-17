@@ -16,10 +16,10 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact={true} to={`${match.url}`} className="nav-logo">
-            Выход
+          <a  href="https://www.instagram.com/teatralnakondyterska/?hl=ru" target="_blank" className="nav-logo">
+            Teatralnaya
             <i className="fas fa-code"></i>
-          </NavLink>
+          </a>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
@@ -56,9 +56,14 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <p className="nav-links" onClick={() => {
+              <a
+                className="nav-links"
+                onClick={() => {
                   dispatch(logOut());
-                }}>Выход</p>
+                }}
+              >
+                Выход
+              </a>
             </li>
           </ul>
           <div className="nav-icon" onClick={handleClick}>

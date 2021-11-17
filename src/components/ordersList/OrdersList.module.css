@@ -19,12 +19,13 @@
 }
 
 .btnDelete:hover {
-  background-color: cornflowerblue;
-  fill: crimson;
+  background-color: #77c3da;
+  fill: #f5b921;
 }
 
 .itemBox {
   margin-bottom: 15px;
+  overflow: hidden;
 }
 
 .gridBox {
@@ -32,7 +33,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+  -webkit-box-shadow: 0px 1px 1px rgba(156, 149, 149, 0.12),
     0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -80,6 +81,8 @@
   font-weight: 700;
   font-style: italic;
   margin-bottom: 5px;
+  width: 87%;
+  overflow: hidden;
 }
 
 .itemPhone {
@@ -112,4 +115,17 @@
   margin: 0 auto;
   color: rgb(255, 255, 255);
   font-size: 14px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .item {
+    width: 340px;
+    margin-right: 15px;
+  }
 }

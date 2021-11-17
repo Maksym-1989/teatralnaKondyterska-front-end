@@ -49,7 +49,7 @@ const OrdersOfDays = () => {
           />
         </div>
         {dataOfDay.length === 0 ? (
-          <h2 className={css.title}>Заказы за выбраную дату отсутствуют! </h2>
+          <h2 className={css.title}>Заказы за выбранную дату отсутствуют! </h2>
         ) : (
           <OrdersList data={dataOfDay} />
         )}

@@ -15,44 +15,55 @@ const ClientPage = () => {
     getOneOrder(id).then((data) => setOrder(data.data));
   }, [id]);
   return (
-      <Container>
-        <Button name="Вернутся назад" />
-        <img src={order.img ? order.img : notFound} alt={order._id}  />
-        <div className={css.itemBox}>
-          <div className={css.itemBoxTitle}>
-            <h2 className={css.itemTitle}>{order.name}</h2>
-            <p className={css.itemPhone}>{order.phone}</p>
+    <Container>
+      <Button name="Вернутся назад" />
+      <div className={css.wrapper}>
+        <img
+          src={order.img ? order.img : notFound}
+          alt={order._id}
+          className={css.img}
+        />
+        <div className={css.contentWrapper}>
+          <div className={css.nameBox}>
+            <h2 className={css.title}>{order.name}</h2>
+            <p className={css}>{order.phone}</p>
           </div>
-          <div className={css.gridBox}>
+          <div className={css.priceBox}>
             <div className={css.smallBox}>
-              <h3 className={css.itemSubTitle}>Цена:</h3>
-              <p className={css.itemText}>{order.price} грн</p>
+              <h3 className={css.subtitle}>Цена:</h3>
+              <p className={css.text}>{order.price} грн</p>
             </div>
             <div className={css.smallBox}>
-              <h3 className={css.itemSubTitle}>Вес:</h3>
-              <p className={css.itemText}>{order.weight} кг</p>
+              <h3 className={css.subtitle}>Предоплата:</h3>
+              <p className={css.text}>{order.prepayment} грн</p>
+            </div>
+          </div>
+
+          <div className={css.dateBox}>
+            <div className={css.smallBox}>
+              <h3 className={css.subtitle}>Вес:</h3>
+              <p className={css.text}>{order.weight} кг</p>
             </div>
             <div className={css.smallBox}>
-              <h3 className={css.itemSubTitle}>Предоплата:</h3>
-              <p className={css.itemText}>{order.prepayment} грн</p>
+              <h3 className={css.subtitle}>Время:</h3>
+              <p className={css.text}>{order.time}</p>
             </div>
-            <div className={css.smallBox}>
-              <h3 className={css.itemSubTitle}>Время:</h3>
-              <p className={css.itemText}>{order.time}</p>
-            </div>
-            <div className={css.smallBox}>
-              <h3 className={css.itemSubTitle}>Дата:</h3>
-              <p className={css.itemText}>{order.dateToReady} г.</p>
-            </div>
-            <div className={css.smallBox}>
-              <h3 className={css.itemSubTitle}>Сумма:</h3>
-              <p className={css.itemText}>
-                {order.price - order.prepayment} грн
-              </p>
-            </div>
+          </div>
+          <div className={css.smallBox}>
+            <h3 className={css.subtitle}>Дата:</h3>
+            <p className={css.text}>{order.dateToReady} г.</p>
+          </div>
+          <h3 className={css.subtitle}>Состав:</h3>
+          <p className={css.text}>{order.filling} </p>
+          <h3 className={css.subtitle}>Описание:</h3>
+          <p className={css.text}>{order.description} </p>
+          <div className={css.summary}>
+            <h3 className={css.subtitle}>Итого:</h3>
+            <p className={css.textTotal}>{order.price - order.prepayment} грн</p>
           </div>
         </div>
-      </Container>
+      </div>
+    </Container>
   );
 };
 

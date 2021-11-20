@@ -34,8 +34,8 @@
     "static/js/11.22766709.chunk.js": "/static/js/11.22766709.chunk.js",
     "static/js/11.22766709.chunk.js.map": "/static/js/11.22766709.chunk.js.map",
     "static/css/12.2827cf93.chunk.css": "/static/css/12.2827cf93.chunk.css",
-    "static/js/12.41786e5e.chunk.js": "/static/js/12.41786e5e.chunk.js",
-    "static/js/12.41786e5e.chunk.js.map": "/static/js/12.41786e5e.chunk.js.map",
+    "static/js/12.891c8541.chunk.js": "/static/js/12.891c8541.chunk.js",
+    "static/js/12.891c8541.chunk.js.map": "/static/js/12.891c8541.chunk.js.map",
     "index.html": "/index.html",
     "static/css/11.c8956ef5.chunk.css.map": "/static/css/11.c8956ef5.chunk.css.map",
     "static/css/12.2827cf93.chunk.css.map": "/static/css/12.2827cf93.chunk.css.map",
@@ -48,7 +48,7 @@
     "static/css/OrdersOfMonth.5f96cc69.chunk.css.map": "/static/css/OrdersOfMonth.5f96cc69.chunk.css.map",
     "static/css/main.d038bc77.chunk.css.map": "/static/css/main.d038bc77.chunk.css.map",
     "static/js/11.22766709.chunk.js.LICENSE.txt": "/static/js/11.22766709.chunk.js.LICENSE.txt",
-    "static/js/12.41786e5e.chunk.js.LICENSE.txt": "/static/js/12.41786e5e.chunk.js.LICENSE.txt",
+    "static/js/12.891c8541.chunk.js.LICENSE.txt": "/static/js/12.891c8541.chunk.js.LICENSE.txt",
     "static/media/NavBar.css": "/static/media/beer_money.9140c11a.ttf",
     "static/media/AuthForm.module.css": "/static/media/bg.f9f8a9a4.png",
     "static/media/bx-upload.8e46928e.svg": "/static/media/bx-upload.8e46928e.svg",
@@ -62,7 +62,7 @@
   "entrypoints": [
     "static/js/runtime-main.50ecef16.js",
     "static/css/12.2827cf93.chunk.css",
-    "static/js/12.41786e5e.chunk.js",
+    "static/js/12.891c8541.chunk.js",
     "static/css/main.d038bc77.chunk.css",
     "static/js/main.d4921307.chunk.js"
   ]

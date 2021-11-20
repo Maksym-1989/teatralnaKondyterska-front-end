@@ -14,7 +14,7 @@ import {
   deleteOrderError,
 } from "./orders-actions";
 
-axios.defaults.baseURL = "http://localhost:4444";
+axios.defaults.baseURL = "https://teatralna.herokuapp.com";
 
 const token = {
   set(token) {

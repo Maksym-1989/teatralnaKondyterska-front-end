@@ -59,7 +59,7 @@ const OrderForm = () => {
     const data = new FormData();
     data.append("image", file);
     axios
-      .post("hhttps://teatralna.herokuapp.com/api/v1/orders/uploadFiles", data)
+      .post("https://teatralna.herokuapp.com/api/v1/orders/uploadFiles", data)
       .then((data) => setUrlImg(data?.data?.img))
       .catch((error) => alert("Изображение не загружено!!!"));
   };

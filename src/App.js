@@ -34,14 +34,14 @@ function App() {
             component={AuthPage}
           />
 
-          <PrivateRoute path="/main" redirectTo="/" component={MainPage} />
-
           <PublicRoute
             exact
             path="/client/:id"
             redirectTo="/"
             component={ClientPage}
           />
+          <PrivateRoute  path="/main" redirectTo="/" component={MainPage}  />
+
 
           <Route component={NotFoundPage}></Route>
         </Switch>

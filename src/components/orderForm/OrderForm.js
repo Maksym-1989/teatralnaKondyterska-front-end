@@ -11,6 +11,7 @@ import moment from "moment";
 import Container from "../container/Container";
 import svg from "../../img/icons/bx-upload.svg";
 import css from "./OrderForm.module.css";
+import { getCurrentUser } from "../../redux/auth/auth-operation";
 
 const initialForm = {
   name: "",
@@ -28,7 +29,10 @@ const phoneRegExp = /^(?:\+38)?(0\d{9})$/;
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Поле обязательное!"),
-  phone: Yup.string().matches(phoneRegExp, "Введите номер телефона.").max(13).required("Поле обязательное!"),
+  phone: Yup.string()
+    .matches(phoneRegExp, "Введите номер телефона.")
+    .max(13)
+    .required("Поле обязательное!"),
   weight: Yup.number().required("Поле обязательное!"),
   price: Yup.number().required("Поле обязательное!"),
   prepayment: Yup.number().required("Поле обязательное!"),
@@ -40,6 +44,7 @@ const OrderForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [urlImg, setUrlImg] = useState(false);
+  dispatch(getCurrentUser);
 
   const handleSubmit = async (values) => {
     const { data } = await dispatch(addOrder(values));
@@ -169,7 +174,8 @@ const OrderForm = () => {
                 autoComplete="off"
                 placeholder="Начинка"
                 className={css.input}
-                rows="6" cols="35"
+                rows="6"
+                cols="35"
               />
               <FormikTextarea
                 label="Описание"
@@ -177,9 +183,9 @@ const OrderForm = () => {
                 autoComplete="off"
                 placeholder="Описание"
                 className={css.input}
-                rows="6" cols="35"
+                rows="6"
+                cols="35"
                 // style={"resize: none;"}
-
               />
 
               <div className={css.footer}>

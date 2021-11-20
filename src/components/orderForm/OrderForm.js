@@ -4,7 +4,7 @@ import { addOrder } from "../../redux/orders/orders-operations";
 ///////////////////////////////Formik, YUP /////////////////////////////////////////////////
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory, useLocation } from "react-router";
 import moment from "moment";
@@ -44,7 +44,9 @@ const OrderForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [urlImg, setUrlImg] = useState(false);
-  dispatch(getCurrentUser);
+  useEffect(()=>{
+    dispatch(getCurrentUser);
+  },[])
 
   const handleSubmit = async (values) => {
     const { data } = await dispatch(addOrder(values));

@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
 
 .wrapper {
   /* Center wrapper perfectly */
@@ -201,7 +199,7 @@ FOOTER
   }
 
   .wrapper {
-    left:  45%;
+    left: 45%;
     right: 0;
   }
 }

@@ -1,7 +1,7 @@
 import { useHistory } from "react-router";
-import css from "./Button.module.css"
+import css from "./Button.module.css";
 
-const Button = ({ name}) => {
+const Button = ({ name }) => {
   const history = useHistory();
   const handleGoBack = () => {
     history.goBack();

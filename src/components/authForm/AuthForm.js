@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
     .required("Поле обязательное!"),
   password: Yup.string()
     .required("Поле обязательное!")
-    .min(6, "Минимум 6 символов.")
+    .min(6, "Минимум 6 символов."),
 });
 
 const AuthForm = () => {

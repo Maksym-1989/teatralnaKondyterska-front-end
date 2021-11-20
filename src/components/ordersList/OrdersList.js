@@ -15,7 +15,10 @@ const OrdersList = ({ data }) => {
     <ul className={css.list}>
       {data?.map((order) => (
         <li key={order._id} className={css.item}>
-          <button onClick={() => handleOnClick(order._id)} className={css.btnDelete}>
+          <button
+            onClick={() => handleOnClick(order._id)}
+            className={css.btnDelete}
+          >
             <IconDelete />
           </button>
 

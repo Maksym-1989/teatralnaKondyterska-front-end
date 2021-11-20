@@ -30,7 +30,7 @@ const IconDelete = () => {
       </g>
       <defs>
         <clipPath id="clip0">
-          <rect width="18" height="18"  />
+          <rect width="18" height="18" />
         </clipPath>
       </defs>
     </svg>

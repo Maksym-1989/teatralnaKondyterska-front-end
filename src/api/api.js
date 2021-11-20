@@ -5,7 +5,7 @@ export const getOneOrder = async (id) => {
     const { data } = await axios.get(
       `https://teatralna.herokuapp.com/api/v1/orders/client/${id}`
     );
-    return  data;
+    return data;
   } catch (error) {
     console.log(error.message);
   }

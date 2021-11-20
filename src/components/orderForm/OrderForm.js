@@ -4,9 +4,9 @@ import { addOrder } from "../../redux/orders/orders-operations";
 ///////////////////////////////Formik, YUP /////////////////////////////////////////////////
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import moment from "moment";
 import Container from "../container/Container";
 import svg from "../../img/icons/bx-upload.svg";

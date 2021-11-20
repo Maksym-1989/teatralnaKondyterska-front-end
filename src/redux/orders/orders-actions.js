@@ -16,7 +16,14 @@ const deleteOrderRequest = createAction("orders/deleteOrderRequest");
 const deleteOrderSuccess = createAction("orders/deleteOrderSuccess");
 const deleteOrderError = createAction("orders/deleteOrderError");
 
+const loadRequest = createAction("orders/loadRequest");
+const loadSuccess = createAction("orders/loadSuccess");
+const loadError = createAction("orders/loadError");
+
 export {
+  loadRequest,
+  loadSuccess,
+  loadError,
   addOrderRequested,
   addOrderSuccess,
   addOrderFailure,
@@ -28,5 +35,5 @@ export {
   getAllForAMonthRequest,
   deleteOrderRequest,
   deleteOrderSuccess,
-  deleteOrderError
+  deleteOrderError,
 };

@@ -22,7 +22,9 @@ const PercentageOfSales = ({ data }) => {
         />
         <span className={css.span}>%</span>
       </div>
-      <p className={css.textSumm}>Итого: {parseInt((summ / 100) * input)} грн</p>
+      <p className={css.textSumm}>
+        Итого: {parseInt((summ / 100) * input)} грн
+      </p>
     </div>
   );
 };

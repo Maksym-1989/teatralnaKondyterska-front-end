@@ -40,8 +40,7 @@ function App() {
             redirectTo="/"
             component={ClientPage}
           />
-          <PrivateRoute  path="/main" redirectTo="/" component={MainPage}  />
-
+          <PrivateRoute path="/main" redirectTo="/" component={MainPage} />
 
           <Route component={NotFoundPage}></Route>
         </Switch>

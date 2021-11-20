@@ -14,6 +14,9 @@ import {
   deleteOrderRequest,
   deleteOrderSuccess,
   deleteOrderError,
+  loadRequest,
+  loadSuccess,
+  loadError,
 } from "./orders-actions";
 
 const ordersOfCurrentDay = createReducer([], {
@@ -39,12 +42,19 @@ const ordersOfMonth = createReducer([], {
   [deleteOrderSuccess]: (state, { payload }) =>
     state.filter(({ _id }) => _id !== payload.data._id),
 });
+const load = createReducer(false, {
+  [loadRequest]: () => true,
+  [loadSuccess]: () => false,
+  [loadError]: () => false,
+});
+
 const allorders = createReducer([], {});
 
 const ordersReducer = combineReducers({
   ordersOfCurrentDay,
   ordersOfMonth,
   allorders,
+  load,
 });
 
 export { ordersReducer };

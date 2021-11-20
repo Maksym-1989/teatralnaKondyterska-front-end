@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import sprite from "../../img/icons/sprite_categories.svg";
 import { getAllOrdersOfMonth } from "../../redux/orders/orders-operations";
-import css from "./MonthPicker.module.css"
+import css from "./MonthPicker.module.css";
 
 const MonthPicker = () => {
   const dispatch = useDispatch();
@@ -36,9 +36,11 @@ const MonthPicker = () => {
           <svg width="25" height="25">
             <use xlinkHref={`${sprite}#icon-arrow-left`} />
           </svg>
-        </span >
-        <p className={css.text}>{month} {year}</p>
-        
+        </span>
+        <p className={css.text}>
+          {month} {year}
+        </p>
+
         <span onClick={() => changeMonth("next")}>
           <svg width="25" height="25">
             <use xlinkHref={`${sprite}#icon-arrow-right`} />

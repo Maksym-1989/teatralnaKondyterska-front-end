@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
-import { getAllOfmonth } from "../../redux/orders/orders-selectors";
+import { getAllOfmonth, trackLoad } from "../../redux/orders/orders-selectors";
+import AppLoader from "../appLoader/AppLoader";
 import Container from "../container/Container";
 import MonthPicker from "../monthPicker/MonthPicker";
 import OrdersList from "../ordersList/OrdersList";
@@ -8,6 +9,7 @@ import css from "./OrdersOfMonth.module.css";
 
 const OrdersOfMonth = () => {
   const dataOfmonth = useSelector(getAllOfmonth);
+  const load = useSelector(trackLoad);
 
   return (
     <Container>
@@ -17,7 +19,9 @@ const OrdersOfMonth = () => {
           <MonthPicker />
         </div>
       </div>
-      {dataOfmonth.length === 0 ? (
+      {load ? (
+        <AppLoader />
+      ) : dataOfmonth.length === 0 ? (
         <h2 className={css.title}>Заказы за выбранный месяц отсутствуют! </h2>
       ) : (
         <OrdersList data={dataOfmonth} />

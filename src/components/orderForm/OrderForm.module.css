@@ -181,20 +181,20 @@ FOOTER
   bottom: -1px;
 }
 
-.input__wrapper {
+.input_wrapper {
   width: 100%;
   position: relative;
   margin: 15px 0;
   text-align: center;
 }
 
-.input__file {
+.input_file {
   opacity: 0;
   visibility: hidden;
   /* position: absolute; */
 }
 
-.input__file_icon_wrapper {
+.input_file_icon_wrapper {
   position: relative;
   height: 60px;
   width: 60px;
@@ -211,19 +211,19 @@ FOOTER
   border-right: 1px solid #fff;
 }
 
-.input__file_icon {
+.input_file_icon {
   margin: 0;
   position: absolute;
   left: 8%;
   width: 30px;
 }
 
-.input__file_button_text {
+.input_file_button_text {
   line-height: 1;
   margin-top: 1px;
 }
 
-.input__file_button {
+.input_file_button {
   width: 100%;
   max-width: 290px;
   height: 60px;

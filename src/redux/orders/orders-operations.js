@@ -13,6 +13,7 @@ import {
   deleteOrderSuccess,
   deleteOrderError,
 } from "./orders-actions";
+import { alertError, alertSuccess } from "../../shared/reactAlert";
 
 axios.defaults.baseURL = "https://teatralna.herokuapp.com";
 
@@ -32,11 +33,14 @@ const addOrder = (formObj) => async (dispatch, getState) => {
     token.set(authToken);
     const { data } = await axios.post("/api/v1/orders", formObj);
     dispatch(addOrderSuccess(data));
+    alertSuccess("Заказ создан")
     return data;
   } catch (error) {
     dispatch(addOrderFailure(error.message));
+    alertError(error.message);
   }
 };
+
 const getAllOrdersForDay = (day) => async (dispatch, getState) => {
   dispatch(getAllForAMonthRequest());
   try {
@@ -46,6 +50,7 @@ const getAllOrdersForDay = (day) => async (dispatch, getState) => {
     dispatch(getAllForADaySuccess(data));
   } catch (error) {
     dispatch(getAllForADayError());
+    alertError(error.message);
   }
 };
 const getAllOrdersOfMonth = (month) => async (dispatch, getState) => {
@@ -57,6 +62,7 @@ const getAllOrdersOfMonth = (month) => async (dispatch, getState) => {
     dispatch(getAllForAMonthSuccess(data));
   } catch (error) {
     dispatch(getAllForAMonthError());
+    alertError(error.message);
   }
 };
 
@@ -70,6 +76,7 @@ const deleteOrder = (id) => async (dispatch, getState) => {
     dispatch(deleteOrderSuccess(data));
   } catch (error) {
     dispatch(deleteOrderError());
+    alertError(error.message);
   }
 };
 

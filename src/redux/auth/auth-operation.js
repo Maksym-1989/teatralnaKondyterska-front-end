@@ -13,6 +13,7 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
 } from "./auth-actions";
+import {alertError, alertSuccess} from "../../shared/reactAlert"
 
 axios.defaults.baseURL = "https://teatralna.herokuapp.com";
 
@@ -46,7 +47,9 @@ const logIn = (loginObject) => async (dispatch) => {
   try {
     const { data } = await axios.post("/api/v1/auth/signin", loginObject);
     dispatch(loginSuccess(data.result));
+    alertSuccess("Добро пожаловать.")
   } catch (error) {
+    alertError("Неверный логин или пароль")
     dispatch(loginError(error.message));
   }
 };

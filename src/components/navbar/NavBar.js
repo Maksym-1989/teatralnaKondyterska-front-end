@@ -16,7 +16,12 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <a  href="https://www.instagram.com/teatralnakondyterska/?hl=ru" target="_blank" className="nav-logo">
+          <a
+            href="https://www.instagram.com/teatralnakondyterska/?hl=ru"
+            target="_blank"
+            className="nav-logo"
+            rel="noreferrer"
+          >
             Teatralnaya
             <i className="fas fa-code"></i>
           </a>

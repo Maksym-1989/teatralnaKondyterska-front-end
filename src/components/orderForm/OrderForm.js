@@ -11,7 +11,7 @@ import moment from "moment";
 import Container from "../container/Container";
 import svg from "../../img/icons/bx-upload.svg";
 import css from "./OrderForm.module.css";
-import { getCurrentUser } from "../../redux/auth/auth-operation";
+import { alertError, alertSuccess } from "../../shared/reactAlert";
 
 const initialForm = {
   name: "",
@@ -44,9 +44,6 @@ const OrderForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [urlImg, setUrlImg] = useState(false);
-  useEffect(()=>{
-    dispatch(getCurrentUser);
-  },[])
 
   const handleSubmit = async (values) => {
     const { data } = await dispatch(addOrder(values));
@@ -60,22 +57,16 @@ const OrderForm = () => {
     data.append("image", file);
     axios
       .post("https://teatralna.herokuapp.com/api/v1/orders/uploadFiles", data)
-      .then((data) => setUrlImg(data?.data?.img))
-      .catch((error) => alert("Изображение не загружено!!!"));
+      .then((data) => {
+        setUrlImg(data?.data?.img);
+        alertSuccess("Изображение загружено.");
+      })
+      .catch((error) => alertError("Изображение не загружено!!!"));
   };
 
   return (
     <Container>
       <div className={css.wrapper}>
-        {/* <form action="#">
-            {" "}
-            <input
-            name="image"
-            type="file"
-              accept=".jpg, .jpeg, .png"
-              onChange={handlePostImg}
-              />
-            </form> */}
         <Formik
           initialValues={initialForm}
           validationSchema={validationSchema}
@@ -95,21 +86,21 @@ const OrderForm = () => {
         >
           <Form className={css.login_form}>
             <div className={css.content}>
-              <div className={css.input__wrapper}>
+              <div className={css.input_wrapper}>
                 {" "}
                 <input
                   name="image"
                   type="file"
                   accept=".jpg, .jpeg, .png"
                   onChange={handlePostImg}
-                  id="input__file"
-                  className={css.input__file}
+                  id="input_file"
+                  className={css.input_file}
                 />
-                <label htmlFor="input__file" className={css.input__file_button}>
-                  <span className={css.input__file_icon_wrapper}>
-                    <img src={svg} alt="" className={css.input__file_icon} />
+                <label htmlFor="input_file" className={css.input_file_button}>
+                  <span className={css.input_file_icon_wrapper}>
+                    <img src={svg} alt="" className={css.input_file_icon} />
                   </span>
-                  <span className={css.input__file_button_text}>
+                  <span className={css.input_file_button_text}>
                     Выберите файл
                   </span>
                 </label>

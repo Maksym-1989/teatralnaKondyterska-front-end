@@ -56,3 +56,19 @@ button:hover {
   cursor: pointer;
 }
 
+.label {
+  font-weight: 500;
+  color: rgb(95, 92, 88);
+  margin-left: 5px;
+}
+
+.box_error_message {
+  height: 20px;
+}
+
+.error_message_text {
+  color: red;
+  margin-left: 5px;
+
+}
+

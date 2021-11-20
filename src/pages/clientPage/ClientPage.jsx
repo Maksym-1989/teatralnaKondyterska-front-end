@@ -7,12 +7,19 @@ import css from "./ClientPage.module.css";
 import Container from "../../components/container/Container";
 import { useSelector } from "react-redux";
 import { getIsAuth } from "../../redux/auth/auth-selectors.js";
+import ModalWindow from "../../components/modalWindow/ModalWindow";
 
 const ClientPage = () => {
   const match = useRouteMatch();
   const { id } = match.params;
   const [order, setOrder] = useState({});
   const isAuth = useSelector(getIsAuth);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen(!isModalOpen);
+  };
+
 
   useEffect(() => {
     getOneOrder(id).then((data) => setOrder(data.data));
@@ -32,6 +39,7 @@ const ClientPage = () => {
           src={order.img ? order.img : notFound}
           alt={order._id}
           className={css.img}
+          onClick={toggleModal}
         />
         <div className={css.contentWrapper}>
           <div className={css.nameBox}>
@@ -63,10 +71,14 @@ const ClientPage = () => {
             <h3 className={css.subtitle}>Дата:</h3>
             <p className={css.text}>{order.dateToReady} г.</p>
           </div>
+          <div >
           <h3 className={css.subtitle}>Состав:</h3>
-          <p className={css.text}>{order.filling} </p>
+          <p className={css.text}>{order.filling}</p>
+          </div>
+          <div >
           <h3 className={css.subtitle}>Описание:</h3>
-          <p className={css.text}>{order.description} </p>
+          <p className={css.text}>{order.description}</p>
+          </div>
           <div className={css.summary}>
             <h3 className={css.subtitle}>Итого:</h3>
             <p className={css.textTotal}>
@@ -75,6 +87,13 @@ const ClientPage = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <ModalWindow
+          url={order.img}
+          onCancel={toggleModal}
+        />
+      )}
+
     </Container>
   );
 };

@@ -1,19 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
 
-body {
-  background: url(../../img/bg.png) repeat;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
-  text-align: left;
-  text-decoration: none;
-}
 
 .wrapper {
   /* Center wrapper perfectly */

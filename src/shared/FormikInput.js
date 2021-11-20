@@ -31,7 +31,7 @@ export const FormikTextarea = ({ label, ...props }) => {
     <div>
       <label className="label" htmlFor={id}>
         {label}
-        <textarea 
+        <textarea
           id={id}
           className={
             meta.error && meta.touched ? "textarea textarea-error" : "textarea"
@@ -39,6 +39,11 @@ export const FormikTextarea = ({ label, ...props }) => {
           {...field}
           {...props}
         />
+        <div className="box_error_message">
+          {meta.error && meta.touched && (
+            <p className="error_message_text">{meta.error}</p>
+          )}
+        </div>{" "}
       </label>
     </div>
   );

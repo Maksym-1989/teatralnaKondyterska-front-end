@@ -26,7 +26,6 @@
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
-  flex-grow: 1;
   font-family: "beer_money"; 
 }
 

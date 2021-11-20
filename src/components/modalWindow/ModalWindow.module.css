@@ -1,0 +1,43 @@
+.ModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.99);
+  z-index: 1000;
+
+}
+
+.ModalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 30px;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.CloseModalBtn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+  border: transparent;
+  background-image: url(../../img/close.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img {
+  width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}

@@ -33,7 +33,7 @@ const AuthForm = () => {
         onSubmit={(values) => handleSubmit(values)}
       >
         <Form className={css.login_form}>
-          <div class={css.header}>
+          <div className={css.header}>
             <h1>Авторизация</h1>
             <span>
               Введите ваши регистрационные данные для входа в ваш личный

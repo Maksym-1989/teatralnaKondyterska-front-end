@@ -56,7 +56,7 @@ button:hover {
   cursor: pointer;
 }
 
-.label {
+/* .label {
   display: block;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
     Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -93,8 +93,8 @@ button:hover {
 .box_error_message {
   height: 20px;
   /* margin-bottom: 20px; */
-}
-
+} */
+/* 
 .error_message_text {
   color: #db1414;
   margin: 1px 0 0;
@@ -103,4 +103,4 @@ button:hover {
   font-style: normal;
   font-weight: 700;
   font-size: 11px;
-}
+} */

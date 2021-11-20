@@ -5,18 +5,28 @@ import { useEffect, useState } from "react";
 import notFound from "../../img/notFound.jpg";
 import css from "./ClientPage.module.css";
 import Container from "../../components/container/Container";
+import { useSelector } from "react-redux";
+import { getIsAuth } from "../../redux/auth/auth-selectors.js";
 
 const ClientPage = () => {
   const match = useRouteMatch();
   const { id } = match.params;
   const [order, setOrder] = useState({});
+  const isAuth = useSelector(getIsAuth);
 
   useEffect(() => {
     getOneOrder(id).then((data) => setOrder(data.data));
   }, [id]);
   return (
     <Container>
-      <Button name="Вернутся назад" />
+      {isAuth ? (
+        <div className={css.btnBox}>
+          <Button name="Назад" />
+        </div>
+      ) : (
+        <></>
+      )}
+
       <div className={css.wrapper}>
         <img
           src={order.img ? order.img : notFound}
@@ -49,7 +59,7 @@ const ClientPage = () => {
               <p className={css.text}>{order.time}</p>
             </div>
           </div>
-          <div className={css.smallBox}>
+          <div className={css.smallBox1}>
             <h3 className={css.subtitle}>Дата:</h3>
             <p className={css.text}>{order.dateToReady} г.</p>
           </div>
@@ -59,7 +69,9 @@ const ClientPage = () => {
           <p className={css.text}>{order.description} </p>
           <div className={css.summary}>
             <h3 className={css.subtitle}>Итого:</h3>
-            <p className={css.textTotal}>{order.price - order.prepayment} грн</p>
+            <p className={css.textTotal}>
+              {order.price - order.prepayment} грн
+            </p>
           </div>
         </div>
       </div>

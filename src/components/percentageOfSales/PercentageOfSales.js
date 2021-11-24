@@ -3,8 +3,9 @@ import css from "./PercentageOfSales.module.css";
 
 const PercentageOfSales = ({ data }) => {
   const [input, setInput] = useState("10");
-  const summ = data.reduce((acc, { price }) => {
-    acc += price;
+  const summ = data.reduce((acc, { price, weight }) => {
+    
+    acc += (price*weight);
     return acc;
   }, 0);
 

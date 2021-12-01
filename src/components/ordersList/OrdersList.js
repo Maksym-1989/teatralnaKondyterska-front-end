@@ -52,7 +52,9 @@ const OrdersList = ({ data }) => {
                 <div className={css.smallBox}>
                   <h3 className={css.itemSubTitle}>Сумма:</h3>
                   <p className={css.itemText}>
-                    {order.price - order.prepayment} грн
+                    {Number(order.price) * Number(order.weight) -
+                      Number(order.prepayment)}{" "}
+                    грн
                   </p>
                 </div>
               </div>

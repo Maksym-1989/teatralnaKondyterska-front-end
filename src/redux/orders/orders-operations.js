@@ -17,6 +17,7 @@ import {
   loadError,
 } from "./orders-actions";
 import { alertError, alertSuccess } from "../../shared/reactAlert";
+import { useDispatch } from "react-redux";
 
 axios.defaults.baseURL = "https://teatralna.herokuapp.com";
 
@@ -95,4 +96,10 @@ const deleteOrder = (id) => async (dispatch, getState) => {
   }
 };
 
-export { addOrder, getAllOrdersForDay, getAllOrdersOfMonth, deleteOrder };
+
+export {
+  addOrder,
+  getAllOrdersForDay,
+  getAllOrdersOfMonth,
+  deleteOrder,
+};

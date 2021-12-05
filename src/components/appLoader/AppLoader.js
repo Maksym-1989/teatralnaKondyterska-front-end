@@ -4,13 +4,13 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import styles from "./AppLoader.module.css";
 
-const AppLoader = () => {
+const AppLoader = ({type="Circles", color="#ffdd40"}) => {
   return (
     <div className={styles.loader}>
       <Loader
         style={styles}
-        type="MutatingDots"
-        color="blue"
+        type={type}
+        color={color}
         secondaryColor="green"
         height={150}
         width={150}
